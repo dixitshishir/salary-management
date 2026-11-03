@@ -1,0 +1,18 @@
+# Countries ACME employs people in, the currency each one pays in, and a fixed
+# exchange rate used only to normalise reports to USD.
+#
+# per_usd = how many units of the local currency make 1 USD.
+# These are illustrative fixed rates, not live market data: they keep reports
+# reproducible. Changing a rate here changes every USD figure in the app.
+as_of: "2026-11-01"
+countries:
+  IN: { name: India,                currency: INR, per_usd: 88.0 }
+  US: { name: United States,        currency: USD, per_usd: 1.0 }
+  GB: { name: United Kingdom,       currency: GBP, per_usd: 0.76 }
+  DE: { name: Germany,              currency: EUR, per_usd: 0.86 }
+  CA: { name: Canada,               currency: CAD, per_usd: 1.39 }
+  AU: { name: Australia,            currency: AUD, per_usd: 1.53 }
+  SG: { name: Singapore,            currency: SGD, per_usd: 1.30 }
+  JP: { name: Japan,                currency: JPY, per_usd: 152.0 }
+  BR: { name: Brazil,               currency: BRL, per_usd: 5.40 }
+  AE: { name: United Arab Emirates, currency: AED, per_usd: 3.6725 }
