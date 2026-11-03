@@ -14,5 +14,6 @@ RSpec.configure do |config|
   # Each example runs in a transaction that is rolled back, so tests never see each other's data.
   config.use_transactional_fixtures = true
   config.include FactoryBot::Syntax::Methods
+  config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 end
