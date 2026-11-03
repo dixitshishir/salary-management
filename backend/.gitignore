@@ -1,0 +1,18 @@
+/.bundle
+
+# Logs, temp files and local databases
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/.keep
+/storage/*
+!/storage/.keep
+
+# Secrets
+/config/master.key
+/.env*
+
+# RSpec state
+/spec/examples.txt
