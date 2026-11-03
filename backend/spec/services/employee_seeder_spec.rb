@@ -31,7 +31,7 @@ RSpec.describe EmployeeSeeder do
     described_class.new(count: 200).call
 
     invalid = Employee.all.reject(&:valid?)
-    expect(invalid.map { |e| [e.employee_code, e.errors.full_messages] }).to be_empty
+    expect(invalid.map { |e| [ e.employee_code, e.errors.full_messages ] }).to be_empty
   end
 
   it "gives every employee a unique, sequential code" do

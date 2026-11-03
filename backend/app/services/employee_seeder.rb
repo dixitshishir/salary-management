@@ -22,25 +22,25 @@ class EmployeeSeeder
 
   # job title => [department, US base salary in USD, relative headcount]
   JOBS = {
-    "Software Engineer"           => ["Engineering", 115_000, 14],
-    "Senior Software Engineer"    => ["Engineering", 150_000, 9],
-    "Staff Engineer"              => ["Engineering", 190_000, 2],
-    "Engineering Manager"         => ["Engineering", 180_000, 3],
-    "QA Engineer"                 => ["Engineering", 90_000, 5],
-    "DevOps Engineer"             => ["Engineering", 125_000, 4],
-    "Product Manager"             => ["Product", 145_000, 4],
-    "Product Designer"            => ["Product", 115_000, 3],
-    "Data Analyst"                => ["Data", 85_000, 4],
-    "Data Scientist"              => ["Data", 135_000, 3],
-    "Sales Executive"             => ["Sales", 75_000, 9],
-    "Account Manager"             => ["Sales", 85_000, 6],
-    "Marketing Specialist"        => ["Marketing", 70_000, 5],
-    "Financial Analyst"           => ["Finance", 85_000, 3],
-    "Accountant"                  => ["Finance", 70_000, 3],
-    "HR Generalist"               => ["People", 65_000, 3],
-    "Recruiter"                   => ["People", 70_000, 3],
-    "Customer Support Specialist" => ["Customer Support", 50_000, 12],
-    "Operations Manager"          => ["Operations", 100_000, 3]
+    "Software Engineer"           => [ "Engineering", 115_000, 14 ],
+    "Senior Software Engineer"    => [ "Engineering", 150_000, 9 ],
+    "Staff Engineer"              => [ "Engineering", 190_000, 2 ],
+    "Engineering Manager"         => [ "Engineering", 180_000, 3 ],
+    "QA Engineer"                 => [ "Engineering", 90_000, 5 ],
+    "DevOps Engineer"             => [ "Engineering", 125_000, 4 ],
+    "Product Manager"             => [ "Product", 145_000, 4 ],
+    "Product Designer"            => [ "Product", 115_000, 3 ],
+    "Data Analyst"                => [ "Data", 85_000, 4 ],
+    "Data Scientist"              => [ "Data", 135_000, 3 ],
+    "Sales Executive"             => [ "Sales", 75_000, 9 ],
+    "Account Manager"             => [ "Sales", 85_000, 6 ],
+    "Marketing Specialist"        => [ "Marketing", 70_000, 5 ],
+    "Financial Analyst"           => [ "Finance", 85_000, 3 ],
+    "Accountant"                  => [ "Finance", 70_000, 3 ],
+    "HR Generalist"               => [ "People", 65_000, 3 ],
+    "Recruiter"                   => [ "People", 70_000, 3 ],
+    "Customer Support Specialist" => [ "Customer Support", 50_000, 12 ],
+    "Operations Manager"          => [ "Operations", 100_000, 3 ]
   }.freeze
 
   FIRST_NAMES = %w[
@@ -106,7 +106,7 @@ class EmployeeSeeder
     usd = base_usd * COUNTRY_PAY_FACTOR.fetch(country_code) * @random.rand(0.75..1.25)
     local = Country.find(country_code).from_usd(usd)
     step = local >= 1_000_000 ? 10_000 : 1_000
-    [(local / step).round * step, step].max
+    [ (local / step).round * step, step ].max
   end
 
   def weighted_pick(weights)

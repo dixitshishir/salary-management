@@ -36,7 +36,7 @@ class Country
 
     def registry
       @registry ||= config.fetch("countries").to_h do |code, attrs|
-        [code, new(code:, name: attrs.fetch("name"), currency: attrs.fetch("currency"), per_usd: attrs.fetch("per_usd"))]
+        [ code, new(code:, name: attrs.fetch("name"), currency: attrs.fetch("currency"), per_usd: attrs.fetch("per_usd")) ]
       end
     end
 

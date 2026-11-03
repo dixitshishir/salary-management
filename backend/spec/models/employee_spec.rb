@@ -93,7 +93,7 @@ RSpec.describe Employee do
     it "records the starting salary when the employee is created" do
       employee = create(:employee, salary: 90_000)
 
-      expect(employee.salary_revisions.map { |r| [r.previous_salary, r.new_salary] }).to eq([[nil, 90_000]])
+      expect(employee.salary_revisions.map { |r| [ r.previous_salary, r.new_salary ] }).to eq([ [ nil, 90_000 ] ])
     end
 
     it "records old and new salary with the reason when salary changes" do
@@ -102,7 +102,7 @@ RSpec.describe Employee do
       employee.update!(salary: 99_000, salary_change_reason: "Annual review")
 
       latest = employee.salary_revisions.order(:id).last
-      expect([latest.previous_salary, latest.new_salary, latest.reason]).to eq([90_000, 99_000, "Annual review"])
+      expect([ latest.previous_salary, latest.new_salary, latest.reason ]).to eq([ 90_000, 99_000, "Annual review" ])
     end
 
     it "does not record a revision when only other fields change" do
