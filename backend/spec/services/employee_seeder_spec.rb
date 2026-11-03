@@ -46,6 +46,14 @@ RSpec.describe EmployeeSeeder do
     expect(Employee.distinct.pluck(:country_code)).to match_array(Country.codes)
   end
 
+  it "leaves a realistic minority of employees off their pay band" do
+    described_class.new(count: 2_000).call
+
+    flagged = PayOutliers.new(threshold: 0.2).call[:total_count]
+
+    expect(flagged.fdiv(2_000)).to be_between(0.01, 0.08)
+  end
+
   it "pays senior roles more than junior ones in the same country, on average" do
     described_class.new(count: 2_000).call
     india = Employee.where(country_code: "IN")

@@ -7,6 +7,7 @@
 # which keeps 10,000 employees to a couple of seconds.
 class EmployeeSeeder
   BATCH_SIZE = 1_000
+  OUTLIER_SHARE = 0.03
 
   # Rough share of the workforce in each country.
   COUNTRY_WEIGHTS = {
@@ -100,13 +101,29 @@ class EmployeeSeeder
     }
   end
 
-  # US base x country factor x individual spread (about +/-25%), converted to
-  # local currency and rounded to a "clean" number like HR would offer.
+  # US base x country factor x individual spread, converted to local currency
+  # and rounded to a "clean" number like HR would offer.
   def local_salary(base_usd, country_code)
-    usd = base_usd * COUNTRY_PAY_FACTOR.fetch(country_code) * @random.rand(0.75..1.25)
+    usd = base_usd * COUNTRY_PAY_FACTOR.fetch(country_code) * pay_spread
     local = Country.find(country_code).from_usd(usd)
     step = local >= 1_000_000 ? 10_000 : 1_000
     [ (local / step).round * step, step ].max
+  end
+
+  # Most people sit close to the band (a bell curve, sd ~8%); about 3% are
+  # paid well off it, so the outlier report has a realistic shortlist rather
+  # than flagging a fifth of the company.
+  def pay_spread
+    if @random.rand < OUTLIER_SHARE
+      @random.rand < 0.5 ? @random.rand(0.55..0.75) : @random.rand(1.3..1.5)
+    else
+      (1 + 0.08 * gaussian).clamp(0.8, 1.2)
+    end
+  end
+
+  # Standard normal sample (Box-Muller), driven by the seeded Random.
+  def gaussian
+    Math.sqrt(-2 * Math.log(1 - @random.rand)) * Math.cos(2 * Math::PI * @random.rand)
   end
 
   def weighted_pick(weights)
