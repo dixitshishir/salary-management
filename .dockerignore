@@ -1,0 +1,11 @@
+.git/
+**/node_modules/
+frontend/dist/
+backend/.bundle/
+backend/log/*
+backend/tmp/*
+backend/storage/*
+backend/config/master.key
+backend/spec/
+**/.env*
+docs/
