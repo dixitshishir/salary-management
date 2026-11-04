@@ -8,7 +8,7 @@ answer "how do we pay people?" without spreadsheets.
 
 | | |
 |---|---|
-| Live demo | _see submission email_ |
+| Live demo | https://acme-salary-manager-pcgx.onrender.com (free plan: the first visit after 15 idle minutes takes about a minute to wake up, and demo data resets on each restart) |
 | Video walkthrough | _see submission email_ |
 | Requirements (one page) | [docs/requirements.md](docs/requirements.md) |
 | Design notes and decisions | [docs/design-notes.md](docs/design-notes.md) |
