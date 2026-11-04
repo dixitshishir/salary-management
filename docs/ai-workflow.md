@@ -14,15 +14,14 @@ session, so the rules don't have to be repeated in every prompt:
 - Make small commits with Conventional Commit messages.
 
 ## How it went
-1. **Requirements first.** I pasted the assessment brief into Claude Code. The first thing it
-   produced was the one-page requirements doc, before any code. I also asked for a few features
-   that weren't in the brief. It suggested four that answer real questions an HR manager has:
-   CSV import and export (so they can move off Excel), salary history, pay outlier flags, and a
-   raise planner. I told it to go ahead with those. The requirements doc also lists what's
-   left out and why.
-2. **Setup.** My laptop didn't have Ruby, so I had it install Ruby 3.4 first. I decided not to
-   email Incubyte with clarifying questions. The assumptions are written down in
-   `requirements.md` instead.
+1. **Requirements first.** The brief was clear, so I didn't need to email Incubyte with
+   questions. I pasted it into Claude Code, and the first thing it produced was the one-page
+   requirements doc, with the assumptions written down, before any code. I wanted to go beyond
+   the brief, so I asked for features that weren't listed. It suggested four that answer real
+   questions an HR manager has: CSV import and export (so they can move off Excel), salary
+   history, pay outlier flags, and a raise planner. I went ahead with those. The requirements
+   doc also lists what's left out and why.
+2. **Setup.** My laptop didn't have Ruby, so I had it install Ruby 3.4 first.
 3. **Design.** SQLite and simple page-number pagination are enough for 10,000 rows. SQLite has no
    median function, so medians are worked out in Ruby. [`design-notes.md`](design-notes.md)
    explains these choices and what would change on Postgres.
